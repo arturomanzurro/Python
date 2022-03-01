@@ -1,0 +1,45 @@
+#Metodo Secante
+
+from math import *
+import math
+
+def f(x):
+   
+    return  sin(x)- math.e**x
+    
+       
+xi1=float((input("Ingrese el valor de la primera aproximacion: ")))
+xi=float((input("Ingrese el valor de la segunda aproximacion: ")))
+tole=float((input("Ingrese el valor de la tolerancia unicamente en decimal: ")))
+itermax=int(input("Ingrese el numero de iteracciones: "))    
+
+err=1
+iter=0
+
+while (err>=tole):
+    
+    iter=iter+1
+    r=xi1-xi
+    
+    Nxi = xi - ((f(xi)*r) / (f(xi1) - f(xi)))
+    
+    if iter>=2:
+        err=abs((Nxi-xi)/Nxi)
+    
+    xi1= xi
+    xi= Nxi
+       
+    if iter>=itermax:
+    
+        break
+    
+    if iter==1:
+     print("N iter " + str(iter))
+     print("Raiz " + str(Nxi))
+    else:
+        print("N iter " + str(iter))
+        print("Raiz " + str(Nxi))
+        print("Error " +  str(err))
+        
+   
+    
